@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pdb
+*.egg-info/
+*.egg
+*.dist-info/
+*.log
+*.sqlite3
+*.db
+
+# Virtual environment
+venv/
+env/
+.venv/
+.env/
+
+# Docker
+*.dockerfile
+docker-compose.yml
+*.tar
+*.img
+output/
+*.zip
+
+# AWS Lambda local
+.aws-sam/
+.aws-lambda/
+
+# IDEs e editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# System files
+.DS_Store
+Thumbs.db
+
+# CSVs de dados sensíveis ou de teste
+data/*.csv
