@@ -63,26 +63,27 @@ dsu-python-aws/
 
 ## 💻 Setup Local (Passo a Passo)
 
-### 1️⃣ Clonar o repositório
+
 
 ```bash
+1️ Clonar o repositório
 git clone https://github.com/seuusuario/dsu-python-aws.git
 cd dsu-python-aws
 
-2️⃣ Criar e ativar ambiente virtual
+2️ Criar e ativar ambiente virtual
 python -m venv venv
 source venv/bin/activate
 
-3️⃣ Instalar dependências
+3️ Instalar dependências
 pip install --upgrade pip
 pip install -r requirements.txt
 
-4️⃣ Testar localmente
+4️ Testar localmente
 python main.py
 PDFs serão gerados na pasta output/.
+```
 
-
-⚠️ Observações
+### Observações
 
 WeasyPrint precisa de bibliotecas nativas (cairo, pango, gdk-pixbuf) no Docker Lambda
 
