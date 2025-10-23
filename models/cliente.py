@@ -41,6 +41,17 @@ class Cliente:
         return f"Cliente(id={self.id}, nome={self.nome}, itens={len(self.itens)})"
 
     @staticmethod
+    def parse_float(value: str) -> float:
+        """Converte strings monetárias em float, ex: 'R$4,50' -> 4.5"""
+        try:
+            if not value:
+                return 0.0
+            value = str(value).replace('R$', '').replace('.', '').replace(',', '.').strip()
+            return float(value)
+        except Exception:
+            return 0.0
+
+    @staticmethod
     def carregar_de_csv(clientes_csv_path, itens_path_template="data/itens_{id}.csv"):
         clientes = []
 
@@ -70,13 +81,17 @@ class Cliente:
                         itens_reader = csv.DictReader(itf)
                         for item_row in itens_reader:
                             try:
+                                quantidade = int(item_row.get('quantidade', 0))
+                                preco_unitario = Cliente.parse_float(item_row.get('preco_unitario', '0'))
+                                total_price = Cliente.parse_float(item_row.get('total_price', '0'))
+
                                 itens.append(
                                     Item(
                                         codigo=item_row.get('codigo', '').strip(),
                                         descricao=item_row.get('descricao', '').strip(),
-                                        quantidade=int(item_row.get('quantidade', 0)),
-                                        preco_unitario=float(item_row.get('preco_unitario', 0)),
-                                        total_price=float(item_row.get('total_price', 0))
+                                        quantidade=quantidade,
+                                        preco_unitario=preco_unitario,
+                                        total_price=total_price
                                     )
                                 )
                             except ValueError as e:
