@@ -1,4 +1,4 @@
-# DSU-Python-AWS 🚀
+# DSU-Python-AWS 
 
 [![Python](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/)  
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
@@ -7,7 +7,7 @@
 
 ---
 
-## ✨ Funcionalidades
+##  Funcionalidades
 
 - Carregar CSV de clientes e itens do S3  
 - Preencher **template HTML** com dados do cliente  
@@ -17,7 +17,7 @@
 
 ---
 
-## 🏗 Arquitetura
+##  Arquitetura
 CSV (input) ──► Lambda (Docker) ──► PDF ──► S3 (output)
 
 
@@ -32,7 +32,7 @@ CSV (input) ──► Lambda (Docker) ──► PDF ──► S3 (output)
 
 ---
 
-## 🗂 Estrutura do Projeto
+##  Estrutura do Projeto
 
 dsu-python-aws/
 ├─ main.py # Lambda handler
@@ -50,7 +50,7 @@ dsu-python-aws/
 
 ---
 
-## ⚙ Pré-requisitos
+##  Pré-requisitos
 
 - Docker >= 24  
 - Python 3.11 (local)  
@@ -61,7 +61,7 @@ dsu-python-aws/
 
 ---
 
-## 💻 Setup Local (Passo a Passo)
+##  Setup Local (Passo a Passo)
 
 
 
@@ -93,16 +93,12 @@ Template HTML pode ser customizado
 
 Clientes sem itens → tabela vazia
 
-🔗 Referências
+### Referências
 
 WeasyPrint
-
 Jinja2
-
 AWS Lambda Container
-
 AWS S3
-
 AWS CloudWatch
 
 👤 Autor
