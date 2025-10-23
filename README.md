@@ -1,17 +1,19 @@
-# DSU-Python-AWS
+# DSU-Python-AWS 🚀
 
-**DSU-Python-AWS** (Documento de Saída do Usuário) é uma aplicação Python que automatiza a geração de PDFs a partir de dados de clientes armazenados em arquivos CSV. O projeto é pensado para execução em **AWS Lambda** utilizando **Docker**, com armazenamento em **S3** e monitoramento via **CloudWatch**.
+[![Python](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/)  
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
+**DSU-Python-AWS** é uma aplicação Python que gera PDFs automaticamente a partir de CSVs de clientes, ideal para rodar em **AWS Lambda** com **Docker**, salvando arquivos no **S3** e registrando logs no **CloudWatch**.
 
 ---
 
-## 🚀 Funcionalidades
+## ✨ Funcionalidades
 
-- Carregar CSV de clientes do S3
-- Carregar CSV de itens de cada cliente
-- Preencher template HTML com dados do cliente
-- Gerar PDF utilizando **WeasyPrint**
-- Salvar PDF no bucket de **output** do S3
-- Logs detalhados de cada etapa no **CloudWatch**
+- Carregar CSV de clientes e itens do S3  
+- Preencher **template HTML** com dados do cliente  
+- Gerar PDF com **WeasyPrint**  
+- Salvar PDFs no bucket de **output** do S3  
+- Logs detalhados no **CloudWatch**  
 
 ---
 
@@ -21,84 +23,74 @@ CSV (input) ──► Lambda (Docker) ──► PDF ──► S3 (output)
 
 **Componentes:**
 
-- **Lambda Function**: Processa arquivos CSV e gera PDFs.
-- **Buckets S3**:
-  - `dsu-python-aws/input` → Recebe arquivos CSV de clientes
-  - `dsu-python-aws/output` → Armazena PDFs gerados
-- **Docker**: Contêiner Python 3.11 com dependências (Jinja2, WeasyPrint, boto3)
-- **CloudWatch**: Monitoramento de logs e métricas da execução
+- **Lambda Function**: processa CSV e gera PDFs  
+- **Buckets S3**:  
+  - `input/` → CSVs de clientes  
+  - `output/` → PDFs gerados  
+- **Docker**: Python 3.11 + dependências (`WeasyPrint`, `Jinja2`, `boto3`)  
+- **CloudWatch**: logs e métricas  
 
 ---
 
 ## 🗂 Estrutura do Projeto
 
 dsu-python-aws/
-│
-├── main.py # Script principal / Lambda handler
-├── Dockerfile # Configuração do container
-├── requirements.txt # Dependências Python
-├── templates/
-│ └── cliente_template.html # Template HTML para gerar PDF
-├── data/
-│ └── clientes.csv # CSV de exemplo
-├── controllers/
-│ └── pdf_controller.py # Lógica de geração de HTML/PDF
-├── models/
-│ └── cliente.py # Classes Cliente e Item
-└── output/ # PDFs gerados localmente (opcional)
-
+├─ main.py # Lambda handler
+├─ Dockerfile # Container config
+├─ requirements.txt # Dependências Python
+├─ templates/
+│ └─ cliente_template.html
+├─ data/
+│ └─ clientes.csv # CSV de exemplo
+├─ controllers/
+│ └─ pdf_controller.py
+├─ models/
+│ └─ cliente.py
+└─ output/ # PDFs gerados localmente (opcional)
 
 ---
 
 ## ⚙ Pré-requisitos
 
-- Docker >= 24
-- AWS CLI configurado
-- Permissões AWS:
-  - `s3:GetObject`
-  - `s3:PutObject`
-  - `logs:CreateLogGroup`
-  - `logs:CreateLogStream`
-  - `logs:PutLogEvents`
-- Python 3.11 (local, se for testar sem Docker)
+- Docker >= 24  
+- Python 3.11 (local)  
+- AWS CLI configurado  
+- Permissões AWS:  
+  - `s3:GetObject` / `s3:PutObject`  
+  - `logs:CreateLogGroup` / `CreateLogStream` / `PutLogEvents`  
 
 ---
 
-## 💻 Setup Local
+## 💻 Setup Local (Passo a Passo)
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seuusuario/dsu-python-aws.git
-   cd dsu-python-aws
+### 1️⃣ Clonar o repositório
 
-2 Criar e ativar ambiente virtual:
+```bash
+git clone https://github.com/seuusuario/dsu-python-aws.git
+cd dsu-python-aws
 
+2️⃣ Criar e ativar ambiente virtual
 python -m venv venv
 source venv/bin/activate
 
-
-3 Instalar dependências:
-
+3️⃣ Instalar dependências
 pip install --upgrade pip
 pip install -r requirements.txt
 
-
-4 Testar localmente:
-
+4️⃣ Testar localmente
 python main.py
-
 PDFs serão gerados na pasta output/.
 
 
 ⚠️ Observações
 
-WeasyPrint precisa de bibliotecas nativas (cairo, pango, gdk-pixbuf) no Lambda Docker.
+WeasyPrint precisa de bibliotecas nativas (cairo, pango, gdk-pixbuf) no Docker Lambda
 
-CSV deve ter cabeçalhos esperados.
+CSV deve ter cabeçalhos corretos
 
-Template HTML pode ser customizado conforme identidade visual da empresa.
+Template HTML pode ser customizado
 
-O projeto suporta clientes sem itens; nesses casos, a tabela ficará vazia.
+Clientes sem itens → tabela vazia
 
 🔗 Referências
 
@@ -114,4 +106,4 @@ AWS CloudWatch
 
 👤 Autor
 
-Luiz – Desenvolvedor de soluções backend, automação e cloud computing
+Luiz – Backend, automação e cloud computing

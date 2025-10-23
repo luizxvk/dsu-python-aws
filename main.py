@@ -3,7 +3,9 @@ from models.cliente import Cliente
 from datetime import datetime
 import os
 
+# -----------------------
 # DSU - Documento de Saída de Usuário
+# -----------------------
 
 try:
     import boto3
