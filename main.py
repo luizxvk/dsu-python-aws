@@ -5,12 +5,13 @@ import os
 
 # DSU - Documento de Saída de Usuário
 
-# Para AWS Lambda
 try:
     import boto3
     LAMBDA = True
 except ImportError:
     LAMBDA = False
+
+
 
 s3 = boto3.client("s3") if LAMBDA else None
 
